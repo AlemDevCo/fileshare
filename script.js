@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Function to create a file item and add it to the list
 function createFileItem(file) {
+    // Exclude specific files
+    const excludedFiles = ['CNAME', 'index.html', 'styles.css', 'script.js'];
+    if (excludedFiles.includes(file.name)) {
+        return;
+    }
+
     const fileItem = document.createElement('div');
     fileItem.className = 'file-item';
     fileItem.textContent = `${file.name} (${file.type})`;
@@ -18,6 +24,7 @@ function createFileItem(file) {
 
     fileList.appendChild(fileItem);
 }
+
 
 
     // Function to handle errors
