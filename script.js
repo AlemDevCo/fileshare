@@ -5,19 +5,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const fileList = document.getElementById('file-list');
 
-    // Function to create a file item and add it to the list
-    function createFileItem(file) {
-        const fileItem = document.createElement('div');
-        fileItem.className = 'file-item';
-        fileItem.textContent = `${file.name} (${file.type})`;
+// Function to create a file item and add it to the list
+function createFileItem(file) {
+    const fileItem = document.createElement('div');
+    fileItem.className = 'file-item';
+    fileItem.textContent = `${file.name} (${file.type})`;
 
-        fileItem.addEventListener('click', function () {
-            // Open the file in a new tab
-            window.open(file.html_url, '_blank');
-        });
+    fileItem.addEventListener('click', function () {
+        // Open the file using the custom domain
+        window.open(`https://fileshare.alemdev.org/${file.name}`, '_blank');
+    });
 
-        fileList.appendChild(fileItem);
-    }
+    fileList.appendChild(fileItem);
+}
+
 
     // Function to handle errors
     function handleError(error) {
