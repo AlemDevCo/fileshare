@@ -15,15 +15,22 @@ function createFileItem(file) {
 
     const fileItem = document.createElement('div');
     fileItem.className = 'file-item';
-    fileItem.textContent = `${file.name} (${file.type})`;
+
+    // Check if the entry is a directory
+    if (file.type === 'dir') {
+        fileItem.textContent = `${file.name}/`;
+    } else {
+        fileItem.textContent = `${file.name} (${file.type})`;
+    }
 
     fileItem.addEventListener('click', function () {
         // Open the file using the custom domain
-        window.open(`https://fileshare.alemdev.org/${file.name}`, '_blank');
+        window.open(`https://fileshare.alemdev.org/${file.path}`, '_blank');
     });
 
     fileList.appendChild(fileItem);
 }
+
 
 
 
